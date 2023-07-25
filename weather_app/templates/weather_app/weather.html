@@ -1,0 +1,26 @@
+<!-- weather_app/templates/weather.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather App</title>
+</head>
+
+<body>
+    <h1>Weather App</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="city">Enter City Name:</label>
+        <input type="text" id="city" name="city">
+        <input type="submit" value="Get Weather">
+    </form>
+    {% if temperature %}
+    <h2>Weather in {{ city_name }}:</h2>
+    <p>Temperature: {{ temperature }} &#8451;</p>
+    <p>Description: {{ description }}</p>
+    {% elif error %}
+    <p>{{ error }}</p>
+    {% endif %}
+</body>
+
+</html>
